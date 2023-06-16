@@ -2,3 +2,14 @@
     MAIN
 */
 
+.container {display: flex;justify-content: center;align-items: center;height: 100vh;position: relative;}
+
+.image {max-width: 100%;max-height: 100%;display: none;}
+
+.appear {display: block;}
+
+.arrow {position: absolute;top: 50%;transform: translateY(-50%);font-size: 2rem;color: var(--dark_color);cursor: pointer;}
+
+.arrow-left {left: 0;}
+
+.arrow-right {right: 0;}
