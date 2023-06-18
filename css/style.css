@@ -2,17 +2,15 @@
     MAIN
 */
 
+body {display: flex;align-items: center;justify-content: center;height: 100vh;}
 
-.container {display: flex;justify-content: center;align-items: center;height: 100vh;position: relative;}
+#carousel {position: relative;width: 100%;height: 40vh;overflow: hidden;}
 
-.image {max-width: 100%;max-height: 100%;}
+#carousel-image {width: 100%;height: 100%;object-fit: contain;}
 
-.appear {display: block;}
+.carousel-button {position: absolute;top: 50%;transform: translateY(-50%);width: 5vw;height: 5vh;color: var(--button_color);font-size: 1.5rem;text-align: center;line-height: 3.125rem;cursor: pointer;background: none;border: none;}
 
-.hide {display: none;}
+#prev-button {left: 0;}
 
-.arrow {position: absolute;top: 50%;transform: translateY(-50%);font-size: 2rem;color: var(--dark_color);cursor: pointer;}
+#next-button {right: 0;}
 
-.arrow-left {left: 0;}
-
-.arrow-right {right: 0;}
