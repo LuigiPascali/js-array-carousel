@@ -35,25 +35,44 @@
 
 // MILESTONE: 3
 
-const images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg'];
-let currentIndex = 0;
-const carouselImage = document.getElementById('carousel-image');
-const prevButton = document.getElementById('prev-button');
-const nextButton = document.getElementById('next-button');
+// Array delle immagini
+const images = ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"];
 
-function updateImage() {
-    const imageUrl = 'img/' + images[currentIndex];
+// Indice dell'immagine attiva
+let currentImageIndex = 0;
+
+// Elementi del DOM
+const carouselImage = document.getElementById("carousel-image");
+const prevButton = document.getElementById("prev-button");
+const nextButton = document.getElementById("next-button");
+
+// Funzione per aggiornare l'immagine visualizzata nel carosello
+function updateCarouselImage() {
+    const imageUrl = "img/" + images[currentImageIndex];
     carouselImage.src = imageUrl;
 }
 
-prevButton.addEventListener('click', function() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage();
-});
+// Funzione per mostrare l'immagine precedente
+function showPreviousImage() {
+    currentImageIndex--;
+    if (currentImageIndex < 0) {
+        currentImageIndex = images.length - 1; // Se l'indice è negativo, imposta l'indice all'ultimo elemento dell'array
+    }
+    updateCarouselImage();
+}
 
-nextButton.addEventListener('click', function() {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-});
+// Funzione per mostrare l'immagine successiva
+function showNextImage() {
+    currentImageIndex++;
+    if (currentImageIndex === images.length) {
+        currentImageIndex = 0; // Se l'indice raggiunge la lunghezza dell'array, imposta l'indice al primo elemento (ciclo infinito)
+    }
+    updateCarouselImage();
+}
 
-updateImage();
+// Aggiunta degli event listener per i clic sulle frecce
+prevButton.addEventListener("click", showPreviousImage);
+nextButton.addEventListener("click", showNextImage);
+
+// Aggiornamento iniziale dell'immagine nel carosello
+updateCarouselImage();
